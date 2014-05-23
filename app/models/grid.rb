@@ -12,8 +12,8 @@ class Grid
 				returning = {}
 				for row in 1..3 do
 					returning[row.to_s] = {}
-					for columb in 1..3 do
-						returning[row.to_s][columb.to_s] = 'e'
+					for collum in 1..3 do
+						returning[row.to_s][collum.to_s] = 'e'
 					end
 				end
 				returning

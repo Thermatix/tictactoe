@@ -1,13 +1,13 @@
 <section id="grid" class="grid">
-	<% for columb in 1..3 do %>
-		<div class="columb" id="<%=columb%>">
+	<% for collum in 1..3 do %>
+		<div class="collum" id="collum_<%=collum%>">
 			<% for row in 1..3 do %>
-				<div class="row" id="<%=row%>">
-					<div id="cell" data-location="<%=columb%>.<%=row%>">
-						<% if @grid.grid[columb.to_s][row.to_s] == 'e' %>
+				<div class="row" id="row_<%=row%>">
+					<div id="cell" data-location="<%=collum%>.<%=row%>">
+						<% if @grid.grid[collum.to_s][row.to_s] == 'e' %>
 							-
 						<% else %>
-							<%= @grid.grid[columb.to_s][row.to_s] %>
+							<%= @grid.grid[collum.to_s][row.to_s] %>
 						<% end %>
 					</div>
 				</div>

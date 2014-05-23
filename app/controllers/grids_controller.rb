@@ -15,7 +15,7 @@ class GridsController < ApplicationController
 		ap @grid
 		respond_with @grid do |format|
 			if @grid.save
-				format.html {redirect_to grids_show_path}
+				format.html {redirect_to show_grid_path}
 				format.js {render layout: false }
 			else
 				format.html {redirect_to error_path}
@@ -26,10 +26,13 @@ class GridsController < ApplicationController
 
 	def update
 		@grid = Grid.new(request.ip)
-		@grid.grid[params['collumb']][params['row']] = params['player']
+		@collum = params['collum']
+		@row = params['row']
+		@player = params['player']
+		@grid.grid[@collum][@row] = @player
 		respond_with @grid do |format|
 			if @grid.save
-				format.html {redirect_to grids_show_path}
+				format.html {redirect_to show_grid_path}
 				format.js {render layout: false }
 			else
 				format.html {redirect_to error_path}

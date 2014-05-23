@@ -1,2 +1,4 @@
-$('#main').html('<%= escape_javascript render 'grid' %>')
-checkForWin(JSON.parse("<%= @grid.to_json %>"))
+$("#collum_<%=@collum%>").find("#row_<%= @row %>").find('#cell').text("<%= @player %>")
+checkForWin(JSON.parse('<%= escape_javascript @grid.to_json.html_safe %>'))
+
+

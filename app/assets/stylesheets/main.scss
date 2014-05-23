@@ -20,7 +20,7 @@ color: white;
 		width: $grid_size;
 		height: $grid_size;
 		border-collapse:collapse;
-		.columb{
+		.collum{
 			margin-left: $border_margin;
 			margin-left: $border_margin;
 			border-collapse: collapse;
@@ -43,5 +43,6 @@ color: white;
   color: orange;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: yellow;
+  cursor: pointer;
   cursor: hand;
 }

@@ -1,0 +1,93 @@
+<% url = TicTacToe::Application.routes.url_helpers %>
+
+var currentP = ''
+var winningCombo = [
+	["1.1","1.2","1.3"],
+	["2.1","2.2","2.3"],
+	["3.1","3.2","3.3"],
+
+	["1.1","2.1","3.1"],
+	["1.2","2.2","3.2"],
+	["1.3","2.3","3.3"],
+
+	["1.2","2.2","3.3"],
+	["1.3","2.2","1.3"]]
+
+function setUpGrid(){
+	currentP = 'X'
+	cells = $('#cell')
+	addListenersTo()
+}
+
+function checkForWin (grid) {
+	console.log('yay')
+	var cells = getCellData()
+	var notEmptyCount = 0
+	$.each(winningCombo,function (comb_index,combination){
+		var pos = [0,0]
+		var c1 =''
+		var c2 = ''
+		var c3 = ''
+		pos = combination[0].split('.')
+		c1 = grid[pos[0].toString()][pos[1].toString()]
+		if(c1 !== 'e') notEmptyCount++
+	  pos = combination[1].split('.')
+		c2 = grid[pos[0].toString()][pos[1].toString()]
+		if(c2 !== 'e') notEmptyCount++
+	  pos = combination[2].split('.')
+		c2 = grid[pos[0].toString()][pos[1].toString()]
+		if(c3 !== 'e') notEmptyCount++
+		if((C1 == c2 ) && (c2 == c3)){
+			winnerIS(c1)
+		}
+		if(notEmptyCount >= 9 ){
+			winnerIS('draw')
+		}
+
+	})
+
+}
+function winnerIS(winner){
+	if(winner !== 'draw'){
+			alert('Winner is ' +_winner)
+			window.location = "<%= url.create_grid_path %>"
+		}else{
+			alert('You have Drawn!')
+			window.location = "<%= url.create_grid_path %>"
+		}
+
+}
+
+function currentPlayer() {
+	var ret = ''
+	switch(currentP){
+		case('X'):
+		ret = 'X'
+		currentP = 'O'
+		break
+		case('O'):
+		ret = 'O'
+		currentP = 'X'
+		break
+	}
+	return ret
+}
+
+function addListenersTo () {
+	$(document).on('click',function(e){
+		var target = $(e.target)
+		if(target.attr('id') == 'cell'){
+				var pos = target.attr('data-location').split('.')
+				var data = {collumb: pos[0], row: pos[1],player:currentPlayer()}
+				$.ajax({
+					url: "<%=url.update_grid_path(format: :js)%>",
+					type: 'PUT',
+					data: data,
+					dataType: 'script'
+				})
+		}
+		return false
+	})
+}
+
+$(document).on('page:change', setUpGrid)

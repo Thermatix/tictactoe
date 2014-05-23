@@ -1,0 +1,47 @@
+$grid_size: 500px;
+$cell_size: ($grid_size / 9) * 2.5;
+$row_size: $grid_size / 3 ;
+$border_margin: -4px;
+body{
+	background-color: blue;
+	color: white;
+}
+h1{
+	text-align: center;
+}
+.button{
+color: white;
+}
+.main{
+	text-align: center;
+	.grid{
+		margin-left: auto;
+		margin-right: auto;
+		width: $grid_size;
+		height: $grid_size;
+		border-collapse:collapse;
+		.columb{
+			margin-left: $border_margin;
+			margin-left: $border_margin;
+			border-collapse: collapse;
+			// height: $row_size;
+			display: inline-block;
+			.row{
+				border-collapse: collapse;
+				display: block;
+
+			}
+		}
+	}
+}
+#cell{
+	border-collapse: collapse;
+	border: 2px ridge orange;
+	width: $cell_size;
+	height: $cell_size;
+  font-size: 8em;
+  color: orange;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: yellow;
+  cursor: hand;
+}

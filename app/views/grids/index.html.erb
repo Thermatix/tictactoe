@@ -1,0 +1,10 @@
+<h1>Tic-Tac-Toe</h1>
+<section id="main" class="main">
+	<div id="index">
+		<p>
+			Want to play a game of Tic-Tac-Toe? Then press Play!
+		</p>
+		<%= link_to 'Play!', create_grid_path, id: 'index', class: 'button', remote: true, method: :post %>
+	</div>
+</section>
+
